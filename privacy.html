@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Privacy Check</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<h1>Privacy & Fingerprint</h1>
+
+<ul id="data"></ul>
+
+<script>
+const data = {
+    "User Agent": navigator.userAgent,
+    "Platform": navigator.platform,
+    "Language": navigator.language,
+    "CPU Cores": navigator.hardwareConcurrency,
+    "Screen": screen.width + "x" + screen.height,
+    "Timezone": Intl.DateTimeFormat().resolvedOptions().timeZone
+};
+
+const ul = document.getElementById("data");
+
+for (let key in data) {
+    const li = document.createElement("li");
+    li.textContent = key + ": " + data[key];
+    ul.appendChild(li);
+}
+</script>
+<!-- Honeypot (anti-bot invisible) -->
+<form style="position:absolute; left:-9999px; top:-9999px;">
+    <input type="text" name="email" id="trap">
+</form>
+</body>
+</html>
